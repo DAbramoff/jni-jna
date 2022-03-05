@@ -1,0 +1,10 @@
+HEADER FILE:
+    javac -h . NativeLibrary.java
+COMPILE:
+    g++ -c -I"%JAVA_HOME%\include" -I"%JAVA_HOME%\include\win32" NativeLibrary.cpp -o NativeLibrary.o
+DLL:
+    g++ -shared -o native.dll NativeLibrary.o -Wl,--add-stdcall-alias
+RUN CMD:
+    java -cp . -Djava.library.path="<Project path>\src\main\java\nativelib\" Main.java
+RUN ARGS:
+    -Djava.library.path="<Project path>\src\main\java\nativelib\"
